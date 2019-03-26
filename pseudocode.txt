@@ -1,0 +1,20 @@
+variables needed
+correct answers
+incorrect answers
+unanswered questions
+FUNCTIONS- gameFin
+	on completion or on time out
+	displays new div w the guess variables
+gameDisplay
+	on start button click<
+	change text of all question divs to questions
+	start timer in timer display div
+
+start button, launches game
+on start, display the quiz div
+timer displayed on top
+
+on click select answer
+unselect any previous answer
+done button on bottom
+ 	if timer = 0, run same function as done button
