@@ -77,11 +77,11 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
 
 }
 let count;
-$('#start').on('click', function () {
+$('#start').on('click', function () {  //THIS PART DOESN'T WORK
     gameDisplay();  //display the game yo
     $('#finButton').append("<button id='finButton'>All done!</button>"); //add finish button if you finish early
-    $('timerDiv').innerHTML = 'Time left: '; //should send a decrementally ticking clock to the div 
-    quizTimeOut();
+    $('timerDiv').append('<p>Time left: </p>'); //should send a decrementally ticking clock to the div, could not get the div to display anything?
+    quizTimeOut(); //start 60 second timer to run timeout function
 });
 
 
@@ -90,7 +90,7 @@ function quizTimeOut() { //the timeout, giving one minute to complete the quiz
 
 }
 $('#finbutton').on("click", function () {
-    gameFin();
+    gameFin(); //
     console.log('helo you clicked finbutton'); //WHY WONT THIS RUN??
 }
 );
