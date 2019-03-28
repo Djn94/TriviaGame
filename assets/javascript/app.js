@@ -57,6 +57,7 @@ const questionsArray = [                    //Questions-objects in the form of a
     },
 ];
 console.log('hi'); //check to see if things are running //sho the 
+
 function gameDisplay() { //This is the function that runs a loop thru every Q 
     let output = []; //establishes array for the Qs
     questionsArray.forEach((currentQuestion, questionNumber) => { //for each Q
@@ -80,14 +81,6 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
 
 }
 let count;
-$('#start').on('click', function () {
-    gameDisplay();
-    clockStart()
-
-});
-$('#finbutton').on('click', function () {
-    console.log('hey') // WHY?
-});
 function gameFin() { //displays results div instead of quiz div, 
     answerContainers = quizContainer.querySelectorAll('.answers');
     correctAnswers = 0;
@@ -126,3 +119,14 @@ function clockStop() {
     clearInterval(intervalId);
     clockRunning = false;
 }
+$('#start').on('click', function () {
+    gameDisplay();
+    clockStart()
+
+});
+$('#finButton').on('click', function () {
+    gameFin();
+    time = 0;
+    $('#timerDiv').text('Time left: ' + time);
+
+});
