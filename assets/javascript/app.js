@@ -64,7 +64,7 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
         for (var letter in currentQuestion.answers) {
             answers.push( //makin lil HTML buttons
                 `<label>
-                <input type="radio" name="question${questionNumber}">
+                <input type="radio" name="question${questionNumber}" value="${letter}">
                 ${letter} :
                 ${currentQuestion.answers[letter]}
               </label>`
@@ -97,6 +97,7 @@ function gameFin() { //displays results div instead of quiz div,
         selector = `input[name=question${questionNumber}]:checked`; //dis selects the checked answers
         userAnswer = (answerContainer.querySelector(selector) || {}).value; //the or value stops unanswered questions from triggering anything
         if (userAnswer === currentQuestion.correctAnswer) { //if the answer is correc
+            console.log('helo');
             correctAnswers++; //increment yo
         }
 
