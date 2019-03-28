@@ -102,7 +102,6 @@ function gameFin() { //displays results div instead of quiz div,
 function timerClock() {
     time--;
     console.log(time);
-    $('#start').text('');
     $('#timerDiv').text('Time left: ' + time);
     if (time === 0) {
         gameFin();
@@ -122,6 +121,7 @@ function clockStop() {
 $('#start').on('click', function () {
     gameDisplay();
     clockStart()
+    $('#startDiv').text('');
 
 });
 $('#finButton').on('click', function () {
