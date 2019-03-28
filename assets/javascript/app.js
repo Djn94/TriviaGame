@@ -1,7 +1,7 @@
 const quizContainer = document.getElementById('quizContainer');
 const resultsContainer = document.getElementById('results');
 const finButton = document.getElementById('finButton');
-let time = 60;
+let time = 20;
 let inervalId;
 var clockRunning = false;
 const questionsArray = [                    //Questions-objects in the form of an aray!
@@ -99,7 +99,7 @@ $('#finbutton').on("click", function () {
 }
 );
 function gameFin() { //displays results div instead of quiz div, 
-    answerContainer = document.querySelectorAll('.answers');
+    answerContainer = document.querySelectorAll(answers);
     correctAnswers = 0;
     questionsArray.forEach((currentQuestion, questionNumber) => { //arrow function to loop thru the Qs
 
@@ -117,9 +117,11 @@ function gameFin() { //displays results div instead of quiz div,
 function timerClock() {
     time--;
     console.log(time);
-    $('#timerDiv').text('Time left: ' + Time);
-    if (time === 0);
-    gameFin();
+    $('#start').text('');
+    $('#timerDiv').text('Time left: ' + time);
+    if (time === 0) {
+        gameFin();
+    }
 }
 function clockStart() {
     if (!clockRunning) { //if clock not running 
