@@ -66,7 +66,7 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
                 ${currentQuestion.answers[letter]}
               </label>`
             );
-        };
+        }
         output.push( //pushin buttons to the answers
             `<div class="question"> ${currentQuestion.question} </div>
               <div class="answers"> ${answers.join('')} </div>`
@@ -75,12 +75,12 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
     );
     document.getElementById('quizContainer').innerHTML = (output.join()); //Pushes the whole quiz to the quiz div 
 
-};
+}
 let count;
 $('#start').on('click', function () {
     gameDisplay();  //display the game yo
     $('#finButton').append("<button id='finButton'>All done!</button>"); //add finish button if you finish early
-    $('timerDiv').innerHTML = 'Time left: ' //should send a decrementally ticking clock to the div 
+    $('timerDiv').innerHTML = 'Time left: '; //should send a decrementally ticking clock to the div 
     quizTimeOut();
 });
 
