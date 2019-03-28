@@ -80,24 +80,14 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
 
 }
 let count;
-$('#start').on('click', function () {  //THIS PART DOESN'T WORK
+$('#start').on('click', function () {
     gameDisplay();
     clockStart()
-    $('#finButton').append("<button id='finButton'>All done!</button>"); //add finish button if you finish early
-    $('timerDiv').append('<p>Time left: </p>'); //should send a decrementally ticking clock to the div, could not get the div to display anything?
-    //start 60 second timer to run timeout function
+
 });
-
-
-function quizTimeOut() { //the timeout, giving one minute to complete the quiz
-    setTimeout(gameFin, 1000); //run gameFin after one minute
-
-}
-$('#finbutton').on("click", function () {
-    gameFin(); //
-    console.log('helo you clicked finbutton'); //WHY WONT THIS RUN??
-}
-);
+$('#finbutton').on('click', function () {
+    console.log('hey') // WHY?
+});
 function gameFin() { //displays results div instead of quiz div, 
     answerContainers = quizContainer.querySelectorAll('.answers');
     correctAnswers = 0;
@@ -111,7 +101,8 @@ function gameFin() { //displays results div instead of quiz div,
         }
 
     });
-    resultsContainer.innerHTML = `${correctAnswers} out of ${questionsArray.length}`; //printing the results to the results div (:
+    resultsContainer.innerHTML = `${correctAnswers} out of ${questionsArray.length}`;
+    clockStop(); //printing the results to the results div (:
 };
 
 function timerClock() {
@@ -129,4 +120,8 @@ function clockStart() {
         clockRunning = true; //now it is (:
         timerClock();
     }
+}
+function clockStop() {
+    clearInterval(intervalId);
+    clockRunning = false;
 }
