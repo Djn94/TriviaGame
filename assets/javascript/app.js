@@ -2,6 +2,8 @@ const quizContainer = document.getElementById('quizContainer');
 const resultsContainer = document.getElementById('results');
 const finButton = document.getElementById('finButton');
 let time = 60;
+const intervalId;
+var clockRunning = false;
 const questionsArray = [                    //Questions-objects in the form of an aray!
     {
         question: 'Which dog is the State Dog of Texas?',
@@ -111,9 +113,9 @@ function gameFin() { //displays results div instead of quiz div,
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`; //printing the results to the results div (:
 };
 function clockStart() {
-    if !(clockRunning) {
-        intervalId = setInterval(count, 1000);
-        clockRunning = true;
+    if !(clockRunning) { //if clock not running 
+        intervalId = setInterval(timerClock, 1000); //runs timerClock every second to decrement the time var
+        clockRunning = true; //now it is (:
     }
 }
 function timerClock() {
