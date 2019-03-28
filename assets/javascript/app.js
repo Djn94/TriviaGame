@@ -1,6 +1,7 @@
 const quizContainer = document.getElementById('quizContainer');
 const resultsContainer = document.getElementById('results');
 const finButton = document.getElementById('finButton');
+let time = 60;
 const questionsArray = [                    //Questions-objects in the form of an aray!
     {
         question: 'Which dog is the State Dog of Texas?',
@@ -99,9 +100,9 @@ function gameFin() { //displays results div instead of quiz div,
     correctAnswers = 0;
     questionsArray.forEach((currentQuestion, questionNumber) => { //arrow function to loop thru the Qs
 
-        const answerContainer = answerContainer[questionNumber]; //grab that correct question
-        const selector = `input[name=question${questionNumber}]:checked`; //dis selects the checked answers
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value; //the or value stops unanswered questions from triggering anything
+        answerContainer = answerContainer[questionNumber]; //grab that correct question
+        selector = `input[name=question${questionNumber}]:checked`; //dis selects the checked answers
+        userAnswer = (answerContainer.querySelector(selector) || {}).value; //the or value stops unanswered questions from triggering anything
         if (userAnswer === currentQuestion.correctAnswer) { //if the answer is correc
             correctAnswers++; //increment yo
         }
@@ -109,5 +110,16 @@ function gameFin() { //displays results div instead of quiz div,
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`; //printing the results to the results div (:
 };
-
-//If you finish early you can click dis to see how you did! but it does nothing?
+function clockStart() {
+    if !(clockRunning) {
+        intervalId = setInterval(count, 1000);
+        clockRunning = true;
+    }
+}
+function timerClock() {
+    time--;
+    console.log(time);
+    $('#timerDiv').text('Time left: ' + Time);
+    if (time === 0);
+    gameFin();
+}
