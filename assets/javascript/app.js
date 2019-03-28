@@ -86,7 +86,7 @@ $('#start').on('click', function () {  //THIS PART DOESN'T WORK
 
 
 function quizTimeOut() { //the timeout, giving one minute to complete the quiz
-    setTimeout(gameFin, 60000); //run gameFin after one minute
+    setTimeout(gameFin, 1000); //run gameFin after one minute
 
 }
 $('#finbutton').on("click", function () {
@@ -95,8 +95,8 @@ $('#finbutton').on("click", function () {
 }
 );
 function gameFin() { //displays results div instead of quiz div, 
-    let answerContainer = quizContainer.querySelectorAll('.answers');
-    let correctAnswers = 0;
+    answerContainer = document.querySelectorAll('.answers');
+    correctAnswers = 0;
     questionsArray.forEach((currentQuestion, questionNumber) => { //arrow function to loop thru the Qs
 
         const answerContainer = answerContainer[questionNumber]; //grab that correct question
