@@ -99,11 +99,11 @@ $('#finbutton').on("click", function () {
 }
 );
 function gameFin() { //displays results div instead of quiz div, 
-    answerContainer = document.querySelectorAll(answers);
+    answerContainers = quizContainer.querySelectorAll('.answers');
     correctAnswers = 0;
     questionsArray.forEach((currentQuestion, questionNumber) => { //arrow function to loop thru the Qs
 
-        answerContainer = answerContainer[questionNumber]; //grab that correct question
+        answerContainer = answerContainers[questionNumber]; //grab that correct question
         selector = `input[name=question${questionNumber}]:checked`; //dis selects the checked answers
         userAnswer = (answerContainer.querySelector(selector) || {}).value; //the or value stops unanswered questions from triggering anything
         if (userAnswer === currentQuestion.correctAnswer) { //if the answer is correc
@@ -111,7 +111,7 @@ function gameFin() { //displays results div instead of quiz div,
         }
 
     });
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`; //printing the results to the results div (:
+    resultsContainer.innerHTML = `${correctAnswers} out of ${questionsArray.length}`; //printing the results to the results div (:
 };
 
 function timerClock() {
