@@ -2,7 +2,7 @@ const quizContainer = document.getElementById('quizContainer');
 const resultsContainer = document.getElementById('results');
 const finButton = document.getElementById('finButton');
 let time = 60;
-const intervalId;
+let inervalId;
 var clockRunning = false;
 const questionsArray = [                    //Questions-objects in the form of an aray!
     {
@@ -81,10 +81,11 @@ function gameDisplay() { //This is the function that runs a loop thru every Q
 }
 let count;
 $('#start').on('click', function () {  //THIS PART DOESN'T WORK
-    gameDisplay();  //display the game yo
+    gameDisplay();
+    clockStart()
     $('#finButton').append("<button id='finButton'>All done!</button>"); //add finish button if you finish early
     $('timerDiv').append('<p>Time left: </p>'); //should send a decrementally ticking clock to the div, could not get the div to display anything?
-    quizTimeOut(); //start 60 second timer to run timeout function
+    //start 60 second timer to run timeout function
 });
 
 
@@ -112,16 +113,18 @@ function gameFin() { //displays results div instead of quiz div,
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`; //printing the results to the results div (:
 };
-function clockStart() {
-    if !(clockRunning) { //if clock not running 
-        intervalId = setInterval(timerClock, 1000); //runs timerClock every second to decrement the time var
-        clockRunning = true; //now it is (:
-    }
-}
+
 function timerClock() {
     time--;
     console.log(time);
     $('#timerDiv').text('Time left: ' + Time);
     if (time === 0);
     gameFin();
+}
+function clockStart() {
+    if (!clockRunning) { //if clock not running 
+        intervalId = setInterval(timerClock, 1000); //runs timerClock every second to decrement the time var
+        clockRunning = true; //now it is (:
+        timerClock();
+    }
 }
